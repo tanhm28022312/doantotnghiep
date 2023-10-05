@@ -1,0 +1,80 @@
+<div class="header bg-primary pb-6">
+    <div class="container-fluid">
+      <div class="header-body">
+        <div class="row align-items-center py-4">
+
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- Page content -->
+  <div class="container-fluid mt--6">
+    <div class="row">
+      <div class="col">
+        <div class="card">
+          <!-- Card header -->
+          <div class="card-header border-0 d-flex">
+           
+            <h3 class="mb-0">Quản lý danh mục (<span>{{listCate?.length}} danh mục</span>)</h3>
+          </div>
+          <div class="icon d-flex" style="margin-left: 25px;margin-bottom: 2rem;">
+            <mat-icon routerLink='add-new'>library_add</mat-icon>
+            <span>Thêm mới</span>
+          </div>
+          <div id="spinner">
+            <mat-spinner style="margin-left: 600px;"></mat-spinner>
+         </div>
+          <!-- Light table -->
+          <div style="display:none" class="table-responsive" id="content">
+            <table class="table align-items-center table-flush">
+              <thead class="thead-light">
+                <tr>
+                  <th scope="col" class="sort" data-sort="name">Tên danh mục</th>
+                  <th scope="col" class="sort" data-sort="budget">Số lượng</th>
+                  <th scope="col">Ngày tạo</th>
+                  <th scope="col">Hành động</th>
+                </tr>
+              </thead>
+              <tbody class="list">
+                <tr  *ngFor="let cate of listCate | paginate: { itemsPerPage: 10, currentPage: p }" >
+                  <th scope="row">
+                    <div class="media align-items-center">
+                      <span class="avatar rounded-circle mr-3">
+                        <img alt="Image placeholder" src="assets/img/theme/bootstrap.jpg">
+                      </span>
+                      <div class="media-body">
+                        <span class="name mb-0 text-sm">{{cate.name}}</span>
+                      </div>
+                    </div>
+                  </th> 
+                  <td class="budget">
+                    {{cate.totalProduct}}
+                  </td>
+                  <td>
+                    <div class="avatar-group">
+                     <span>{{cate.date|date:'medium'}}</span>
+                    </div>
+                  </td>
+                  <td>
+                    <div class="avatar-group">
+                      <a routerLink="update/{{cate.id}}">
+                        <span style="margin-right: 19px;"><img src="assets/img/setting.png" width="23" height="23"></span>
+
+                      </a>
+                      <a class="delete-icon" (click)="deleteCate(cate)">
+                        <span><img src="assets/img/bin.png" width="23" height="23"></span>
+                      </a>
+                    </div>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <!-- Card footer -->
+          <pagination-controls (pageChange)="p = $event"></pagination-controls>
+        </div>
+      </div>
+    </div>
+    <!-- Dark table -->
+
+

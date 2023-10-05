@@ -1,0 +1,83 @@
+<div class="main-content">
+    <!-- Header -->
+    <div class="header bg-gradient-primary py-7 py-lg-3 pt-lg-7">
+      <div class="separator separator-bottom separator-skew zindex-100">
+        <svg x="0" y="0" viewBox="0 0 2560 100" preserveAspectRatio="none" version="1.1" xmlns="http://www.w3.org/2000/svg">
+          <polygon class="fill-default" points="2560 0 2560 100 0 100"></polygon>
+        </svg>
+      </div>
+    </div>
+    <!-- Page content -->
+    <div class="container mt--7 pb-5">
+      <!-- Table -->
+      <div class="row justify-content-center">
+        <div class="col-lg-6 col-md-7">
+          <div class="card bg-secondary border-0">
+            
+            <!-- <div class="card-header bg-transparent pb-5">
+              <div class="text-muted text-center mt-2 mb-4"><small>Sign up with</small></div>
+              <div class="text-center">
+                <a href="#" class="btn btn-neutral btn-icon mr-4">
+                  <span class="btn-inner--icon"><img src="../assets/img/icons/common/facebook-icon.jpg"></span>
+                  <span class="btn-inner--text">Facebook</span>
+                </a>
+                <a href="#" class="btn btn-neutral btn-icon">
+                  <span class="btn-inner--icon"><img src="../assets/img/icons/common/google.svg"></span>
+                  <span class="btn-inner--text">Google</span>
+                </a>
+              </div>
+            </div> -->
+            <div class="card-body px-lg-5 py-lg-4">
+              <h5>REGISTER</h5>
+              <form [formGroup]="registerForm">
+                <div class="form-group">
+                  <div class="input-group input-group-merge input-group-alternative mb-3">
+                    <div class="input-group-prepend">
+                      <span class="input-group-text"><i class="ni ni-hat-3"></i></span>
+                    </div>
+                    <input formControlName="username" name="username" class="form-control" placeholder="Name" type="text">
+                  </div>
+                  <div class="error" *ngIf="registerForm?.get('username')?.hasError('required') && registerForm?.get('username')?.touched">Username is required</div>
+                  <div class="error" *ngIf="isUsernameExisted">Username is exited</div>
+                </div>   
+                <div class="form-group">
+                  <div class="input-group input-group-merge input-group-alternative mb-3">
+                    <div class="input-group-prepend">
+                      <span class="input-group-text"><i class="ni ni-email-83"></i></span>
+                    </div>
+                    <input formControlName="email" name="email" class="form-control" placeholder="Email" type="email"  required="required">
+                  </div>
+                  <div class="error" *ngIf="registerForm?.get('email')?.hasError('pattern')">Invalid email format.</div>
+                  <div class="error" *ngIf="checkExistedEmail">Email is existed.</div>
+                  <div class="error" *ngIf="registerForm?.get('email')?.hasError('required') && registerForm?.get('email')?.touched">Email is required</div>
+                </div>
+                <div class="form-group">
+                  <div class="input-group input-group-merge input-group-alternative">
+                    <div class="input-group-prepend">
+                      <span class="input-group-text"><i class="ni ni-lock-circle-open"></i></span>
+                    </div>
+                    <input formControlName="password" name="password" class="form-control" placeholder="Password" type="password">
+                  </div>
+                  <div class="error" *ngIf="registerForm?.get('password')?.hasError('required') && registerForm?.get('password')?.touched">Password is required</div>
+                </div>
+                <div class="form-group">
+                  <div class="input-group input-group-merge input-group-alternative">
+                    <div class="input-group-prepend">
+                      <span class="input-group-text"><i class="ni ni-lock-circle-open"></i></span>
+                    </div>
+                    <input formControlName="repeatPassword" (blur)="checkRepeatPassword()" name="repeatPassword" class="form-control" placeholder="Repeate password" type="password">
+                  </div>
+                  <div class="error" *ngIf="registerForm?.get('repeatPassword')?.hasError('required') && registerForm?.get('repeatPassword')?.touched">Repeat Password is required</div>
+                  <div *ngIf="checkRepeatePass && !registerForm?.get('repeatPassword')?.hasError('required')" class="error">Password is not match</div>
+                </div>
+                <div class="text-center">
+                  <button [disabled]="registerForm.invalid || checkRepeatePass || isUsernameExisted || checkExistedEmail" (click)="register()" class="btn btn-primary mt-3">Create account</button>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+

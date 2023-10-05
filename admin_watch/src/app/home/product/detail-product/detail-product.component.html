@@ -1,0 +1,67 @@
+<div class="card-header border-0 d-flex" style="margin: 10px 0px 10px 50px;">
+   
+</div>
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <table>
+                <tr>
+                    <th>Tên sản phẩm</th>
+                    <td>{{prod.productName}}</td>
+                </tr>
+                <tr>
+                    <th>Mô tả</th>
+                    <td>{{prod.shortDescription}}</td>
+                </tr>
+                <tr>
+                    <th>Giá ban đầu</th>
+                    <td>{{prod.initialPrice | vnCurrency}}</td>
+                </tr>
+                <tr>
+                    <th>Giảm giá</th>
+                    <td>{{prod.percent}}</td>
+                </tr>
+                <tr>
+                    <th>Giá bán</th>
+                    <td>{{prod.saleOff | vnCurrency}}</td>
+                </tr>
+
+                <tr>
+                    <th>Số lượng</th>
+                    <td>{{prod.quantity}}</td>
+                </tr>
+                <tr>
+                    <th>Tình trạng</th>
+                    <td style="color: rgb(99, 230, 99);" *ngIf="prod.status" class="status">Hoạt động</td>
+                    <td style="color: red;" *ngIf="!prod.status" class="status">Đã ngừng</td>
+                </tr>
+                <tr>
+                    <th>Dòng</th>
+                    <td>{{prod.power}}</td>
+                </tr>
+                <tr>
+                    <th>Chất liệu dây</th>
+                    <td>{{prod.ropeMaterial}}</td>
+                </tr>
+                <tr>
+                    <th>Chất liệu kính</th>
+                    <td>{{prod.glassMaterial}}</td>
+                </tr>
+                <tr>
+                    <th>Thương hiệu</th>
+                    <td>{{prod.trademark}}</td>
+                </tr>
+                <tr>
+                    <th>Xuất xứ</th>
+                    <td>{{prod.origin}}</td>
+                </tr>
+                <tr>
+                    <td colspan="2">
+                        <button type="submit" (click)="back()" class="btn btn-default">Quay lại</button>
+                        <!-- <button (click)="back()" class="button-delete">Back</button> -->
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </div>
+</div>

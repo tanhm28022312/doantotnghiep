@@ -1,0 +1,108 @@
+<div class="card-header border-0">
+  <div class="card-header border-0 d-flex">
+    <mat-icon>library_add</mat-icon>
+    <p class="mb-0">Thêm mới</p>
+   
+  </div>
+</div>
+
+<div class="container">
+  <div class="row">
+      <div class="col-md-12">
+          <div class="table-responsive">
+              <table id="mytable"
+                  class="table table-bordred table-striped fixed"
+                  style="table-layout: fixed;">
+                  <tr>
+                      <th>Tên sản phẩm <sup style="color:red">*</sup></th>  
+                      <td>
+                          <input type="text" name="cateName"[(ngModel)]="product.productName"/>
+                      </td>
+                  </tr>
+                 
+                  <tr>
+                      <th>Mô tả <sup style="color:red">*</sup></th>
+                      <td><textarea type="text" name="shortDescription"[(ngModel)]="product.shortDescription"></textarea>
+                      </td>
+                   </tr>
+                   <tr>
+                    <th>Giá ban đầu<sup style="color:red">*</sup></th>
+                    <td><input type="number" min="1" name="initialPrice"[(ngModel)]="product.initialPrice"/>
+                    </td>
+                   </tr>
+                 <tr>
+                  <th>Giảm giá</th>
+                  <td><input type="number"  min="1" name="discount"[(ngModel)]="product.percent"/>
+                  </td>
+                 </tr>
+                 <tr>
+                  <th>Số lượng <sup style="color:red">*</sup></th>
+                    <td><input type="number" min="1" name="Quantity"[(ngModel)]="product.quantity"/>
+                  </td>
+                </tr>
+                 <tr>
+                  <th>Tình trạng <sup style="color:red">*</sup></th>
+                    <td>
+                      <mat-select [(ngModel)]="product.status">
+                        <mat-option style="color:green" value="true">Còn hàng</mat-option>
+                        <mat-option style="color:red" value="false">Hết hàng</mat-option>
+                      </mat-select>
+                    </td>
+                </tr>
+                <tr>
+                  <th>Danh mục <sup style="color:red">*</sup></th>
+                    <td>
+                      <mat-select [(ngModel)]="product.categoryId">
+                        <mat-option *ngFor="let cate of listCate"  [value]="cate.id">{{cate.name}}</mat-option>
+                      </mat-select>
+                    </td>
+                </tr>
+                <tr>
+                  <th>Dòng</th>
+                     <td><input type="text" name="power"[(ngModel)]="product.power"/>
+                  </td>
+                </tr>
+                <tr>
+                  <th>Chất liệu dây</th>
+                     <td><input type="text" name="rope"[(ngModel)]="product.ropeMaterial"/>
+                  </td>
+                </tr>
+                <tr>
+                  <th>Chất liệu kính</th>
+                     <td><input type="text" name="glass"[(ngModel)]="product.glassMaterial"/>
+                  </td>
+                </tr>
+                <tr>
+                  <th>Thương hiệu</th>
+                     <td><input type="text" name="trademark"[(ngModel)]="product.trademark"/>
+                  </td>
+                </tr>
+                <tr>
+                  <th>Xuất xứ</th>
+                     <td><input type="text" name="origin"[(ngModel)]="product.origin"/>
+                  </td>
+                </tr>
+                <tr>
+                  <th>Ảnh sản phẩm<sup style="color:red">*</sup></th>
+                     <td><input style="width: 200px;" type="file" multiple="false" name="image"(change)="uploadFile($event)"/>
+                      <img *ngIf="image" src="assets\img\product\{{product.imageUrl}}" height="100px" width="100px">
+                  </td>
+                </tr>                  
+              </table>
+              <mat-accordion>
+                <form [formGroup]="form" autocomplete="off" >
+                    <formly-form [form]="form" [fields]="fields" [model]="product"></formly-form>
+                    <button type="submit" (click)="add()" class="btn btn-default" style="margin-left: 700px;">Tạo</button>
+                </form>
+              </mat-accordion>
+          </div>
+      </div>
+  </div>
+</div>
+
+
+
+
+
+
+

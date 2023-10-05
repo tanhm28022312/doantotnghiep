@@ -1,0 +1,32 @@
+<div class="main-content-wrap section-ptb cart-page">
+  <div class="container">
+    <div class="row">
+      <div class="col-12">
+        <form action="#" class="cart-table">
+          <div class="table-content table-responsive">
+            <table class="table ">
+              <thead>
+                <tr>
+                  <th>Ảnh</th>
+                  <th>Tên sản phẩm</th>
+                  <th>Giá bán</th>
+                  <th>Số lượng</th>
+                  <th>Tổng tiền</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let detail of orderDetails">
+                  <td><a><img height="80" width="80" src="assets/img/product/{{detail.imageUrl}}" alt="product-details" /></a> </td>
+                  <td>{{detail.productName}}</td>
+                  <td>{{detail.saleOff | vnCurrency}}</td>
+                  <td style="text-align: center">{{detail.quantity}}</td>
+                  <td>{{(detail.saleOff * detail.quantity) | vnCurrency}}</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

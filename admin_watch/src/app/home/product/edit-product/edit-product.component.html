@@ -1,0 +1,154 @@
+<div class="card-header border-0">
+  <mat-accordion>
+    <mat-expansion-panel [expanded]="true">
+      <mat-expansion-panel-header>
+        <mat-panel-title>
+          <mat-icon>edit</mat-icon>
+          Sửa thông tin
+        </mat-panel-title>
+      </mat-expansion-panel-header>
+      <mat-accordion>
+        <form [formGroup]="formSearch" *ngIf="formSearch">
+          <div fxLayout="row wrap" class="d-flex row-class">
+            <div class="div-input">
+              <mat-form-field>
+                <mat-label>Tên sản phẩm <sup style="color:red">*</sup></mat-label>
+                <input matInput formControlName="productName" />
+                <mat-icon *ngIf="formSearch.controls.productName.value" class="showclear" matSuffix mat-icon-button
+                  (click)="formSearch.controls.productName.setValue(null); $event.stopPropagation()">close</mat-icon>
+              </mat-form-field>
+            </div>
+          </div>
+          <div fxLayout="row wrap" class="d-flex row-class">
+            <div class="div-input description">
+              <mat-form-field>
+                <mat-label>Mô tả <sup style="color:red">*</sup></mat-label>
+                <input class="description" matInput formControlName="shortDescription" />
+                <mat-icon *ngIf="formSearch.controls.shortDescription.value" class="showclear" matSuffix
+                  mat-icon-button>close</mat-icon>
+              </mat-form-field>
+            </div>
+          </div>
+          <div fxLayout="row wrap" class="d-flex row-class">
+            <div class="div-input">
+              <mat-form-field>
+                <mat-label>Giá ban đầu<sup style="color:red">*</sup></mat-label>
+                <input type="number"  matInput formControlName="initialPrice" />
+                <mat-icon *ngIf="formSearch.controls.initialPrice.value" class="showclear" matSuffix mat-icon-button
+                  (click)="formSearch.controls.initialPrice.setValue(null); $event.stopPropagation()">close</mat-icon>
+              </mat-form-field>
+            </div>
+          </div>
+          <div fxLayout="row wrap" class="d-flex row-class">
+            <div style="display: flex;" class="div-input">
+              <mat-form-field>
+                <mat-label>Giảm giá</mat-label>
+                <input type="number"  matInput formControlName="percent" />
+              </mat-form-field>
+            </div>
+          </div>
+          <div fxLayout="row wrap" class="d-flex row-class">
+            <div class="div-input">
+              <mat-form-field>
+                <mat-label>Số lượng <sup style="color:red">*</sup></mat-label>
+                <input type="number" matInput formControlName="quantity" />
+
+                <mat-icon *ngIf="formSearch.controls.quantity.value" class="showclear" matSuffix mat-icon-button
+                  (click)="formSearch.controls.quantity.setValue(null); $event.stopPropagation()">close</mat-icon>
+              </mat-form-field>
+            </div>
+          </div>
+          <div fxLayout="row wrap" class="d-flex row-class">
+            <div class="div-input">
+              <mat-form-field>
+                <mat-label>Tình trạng <sup style="color:red">*</sup></mat-label>
+                <mat-select formControlName="status">
+                  <mat-option [value]="null"><strong>--Chọn--</strong></mat-option>
+                  <ng-container *ngFor="let item of listStatus">
+                    <mat-option [value]="item.value">{{item.label}}</mat-option>
+                  </ng-container>
+                </mat-select>
+              </mat-form-field>
+            </div>
+          </div>
+          <div fxLayout="row wrap" class="d-flex row-class">
+            <div class="div-input">
+              <mat-form-field>
+                <mat-label>Danh mục <sup style="color:red">*</sup></mat-label>
+                <mat-select formControlName="categoryId">
+                  <mat-option [value]="null"><strong>--Chọn--</strong></mat-option>
+                  <mat-option *ngFor="let cate of listCate" [value]="cate.id">{{cate.name}}</mat-option>
+                </mat-select>
+              </mat-form-field>
+            </div>
+          </div>
+          <div fxLayout="row wrap" class="d-flex row-class">
+            <div class="div-input">
+              <mat-form-field>
+                <mat-label>Dòng</mat-label>
+                <input matInput formControlName="power" />
+
+                <mat-icon *ngIf="formSearch.controls.power.value" class="showclear" matSuffix mat-icon-button
+                  (click)="formSearch.controls.power.setValue(null); $event.stopPropagation()">close</mat-icon>
+              </mat-form-field>
+            </div>
+          </div>
+          <div fxLayout="row wrap" class="d-flex row-class">
+            <div class="div-input">
+              <mat-form-field>
+                <mat-label>Chất liệu dây</mat-label>
+                <input matInput formControlName="ropeMaterial" />
+
+                <mat-icon *ngIf="formSearch.controls.ropeMaterial.value" class="showclear" matSuffix mat-icon-button
+                  (click)="formSearch.controls.ropeMaterial.setValue(null); $event.stopPropagation()">close</mat-icon>
+              </mat-form-field>
+            </div>
+          </div>
+          <div fxLayout="row wrap" class="d-flex row-class">
+            <div class="div-input">
+              <mat-form-field>
+                <mat-label>Chất lượng kính</mat-label>
+                <input matInput formControlName="glassMaterial" />
+
+                <mat-icon *ngIf="formSearch.controls.glassMaterial.value" class="showclear" matSuffix mat-icon-button
+                  (click)="formSearch.controls.glassMaterial.setValue(null); $event.stopPropagation()">close</mat-icon>
+              </mat-form-field>
+            </div>
+          </div>
+          <div fxLayout="row wrap" class="d-flex row-class">
+            <div class="div-input">
+              <mat-form-field>
+                <mat-label>Thương hiệu</mat-label>
+                <input matInput formControlName="trademark" />
+
+                <mat-icon *ngIf="formSearch.controls.trademark.value" class="showclear" matSuffix mat-icon-button
+                  (click)="formSearch.controls.trademark.setValue(null); $event.stopPropagation()">close</mat-icon>
+              </mat-form-field>
+            </div>
+          </div>
+          <div fxLayout="row wrap" class="d-flex row-class">
+            <div class="div-input">
+              <mat-form-field>
+                <mat-label>Xuất xứ</mat-label>
+                <input matInput formControlName="origin" />
+
+                <mat-icon *ngIf="formSearch.controls.origin.value" class="showclear" matSuffix mat-icon-button
+                  (click)="formSearch.controls.origin.setValue(null); $event.stopPropagation()">close</mat-icon>
+              </mat-form-field>
+            </div>
+          </div>
+          <div fxLayout="row wrap" class="d-flex row-class">
+            <div class="div-input">
+              <input accept="image/*" type="file" multiple="false" name="image" (change)="uploadFile($event)">
+            </div>
+          </div>
+          <img *ngIf="imageUrl" src="assets\img\product\{{imageUrl}}" height="100px" width="100px">
+        </form>
+      </mat-accordion>
+      <button mat-raised-button (click)='back()' type="submit" class="btn btn-default"
+        style="margin-left: 20px;">Quay lại</button>
+      <button mat-raised-button (click)='updateProduct()' type="submit" class="btn btn-default"
+        style="margin-right: 9px;">Cập nhật</button>
+    </mat-expansion-panel>
+  </mat-accordion>
+</div>

@@ -1,0 +1,86 @@
+<div class="header bg-primary pb-6">
+  <div class="container-fluid">
+    <div class="header-body">
+      <div class="row align-items-center py-4">
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Page content -->
+<div class="container-fluid mt--6">
+  <div class="row">
+    <div class="col">
+      <div class="card">
+        <!-- Card header -->
+        <div class="card-header border-0">
+          <h3 class="mb-0">Quản lý đơn hàng (<span class="total">{{ listOrder?.length }} đơn hàng</span>)</h3>
+        </div>
+        <!-- Light table -->
+        <div class="table-responsive">
+          <table class="table align-items-center table-flush">
+            <thead class="thead-light">
+              <tr>
+                <th scope="col" class="sort" data-sort="name">Tên khách hàng</th>
+                <th scope="col">Ngày đặt đơn</th>
+                <th scope="col" class="sort" data-sort="budget">Tổng tiền</th>
+                <th scope="col" class="sort" data-sort="address">Địa chỉ</th>
+                <th scope="col" class="sort" data-sort="phone">Số điện thoại</th>
+                <th scope="col" class="sort" data-sort="note">Ghi chú</th>
+                <th scope="col" class="sort" data-sort="status">Tình trạng đơn</th>         
+                <th scope="col" class="sort" data-sort="status">Hành động</th>
+                <th scope="col"></th>
+              </tr>
+            </thead>
+            <tbody class="list">
+              <tr *ngFor="let order of listOrder | paginate: { itemsPerPage: 10, currentPage: p }; let i =index">
+                <th scope="row" style="height: 65.07px;">
+                  <div class="media align-items-center">
+                    <div class="media-body">
+                      <span class="name mb-0 text-sm">{{order.customerName}}</span>
+                    </div>
+                  </div>
+                </th>
+                <td>
+                  <div class="media align-items-center">
+                    <div class="media-body">
+                      <span class="name mb-0 text-sm">{{order.createdDate | date:'medium' }}</span>
+                    </div>
+                  </div>
+                </td>
+                <td class="budget">
+                  {{order.totalMoney | vnCurrency}}
+                </td>
+                <td class="address">
+                  {{order.customerAddress}}
+                </td>
+                <td class="phone">
+                  {{order.customerPhone}}
+                </td>
+                <td class="note">
+                  {{order.customerNote}}
+                </td>
+                <td style="width: 200px">
+                  <mat-select (selectionChange)="updateOrderStatus(order.status,i)" [(ngModel)]="order.status">
+                    <mat-option  value="WAITING FOR APPROVAL">Chờ xác nhận</mat-option>
+                    <mat-option  value="DELIVERY IN PROCESS">Đang giao hàng</mat-option>
+                    <mat-option  value="DELIVERY SUCCESSFULLY">Giao hàng thành công</mat-option>
+                    <mat-option  value="CANCELED">Hủy đơn hàng</mat-option>              
+                  </mat-select>
+                </td>
+                
+                <td>
+                  <a class="icon" (click)="viewDetail(order)">
+                    <span style="margin-right: 13px"><img src="assets/img/eye.png" width="38" height="38"/> </span>
+                  </a>
+                 
+                
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <pagination-controls (pageChange)="p = $event"></pagination-controls>
+      </div>
+    </div>
+  </div>
+  <!-- Dark table -->

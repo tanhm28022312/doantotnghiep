@@ -1,0 +1,108 @@
+<!-- <div class="header pb-6 d-flex align-items-center" style="min-height: 100px; background-image: url(assets/img/images/large-blog-2.jpg); background-size: cover; background-position: center top;"> -->
+ <!-- </div> -->
+    <div class="header bg-primary pb-6">
+      <div class="container-fluid">
+        <div class="header-body">
+          <div class="row align-items-center py-4"></div>
+        </div>
+      </div>
+    </div>
+  <!-- Page content -->
+  <div class="container-fluid mt--6">
+    <!-- Page content -->
+    <div class="mt--6" *ngIf="user.role ==='admin' ">
+      <div class="row">
+        <div class="col">
+          <div class="card">
+            <!-- Card header -->
+            <div class="card-header border-0 d-flex">
+              <h3 class="mb-0">Quản lý tài khoản (<span>{{listAccount?.length}} tài khoản</span>)</h3>
+            </div>
+            <div class="table-responsive" id="content">
+              <table class="table align-items-center table-flush">
+                <thead class="thead-light">
+                  <tr>
+                    <th scope="col" class="sort" data-sort="name">Tên</th>
+                    <th scope="col" class="sort" data-sort="shortdescription">Số điện thoại</th>
+                    <th scope="col" class="sort" data-sort="saleoff">Email</th>
+                    <th scope="col" class="sort" data-sort="address">Địa chỉ</th>  
+                    <th scope="col" class="sort" data-sort="saleoff">Chức danh</th>
+                    <th scope="col" class="sort" data-sort="loginDate">Hành động</th>
+                  </tr>
+                </thead>
+                <tbody class="list">
+                  <tr *ngFor="let x of listAccount | paginate: { itemsPerPage: 20, currentPage: p } ">
+                    <th scope="row" style="height: 65.07px;">
+                      <div class="media align-items-center">
+                       
+                        <div class="media-body">
+                          <span class="name mb-0 text-sm">{{x.username}}</span>
+                        </div>
+                      </div>
+                    </th>
+                   
+                    <td>
+                      <div class="phone">
+                        <span>{{x.phone}}</span>
+                      </div>
+                    </td>
+                    <td>
+                      <div class="email">
+                        <span>{{x.email}}</span>
+                      </div>
+                    </td>
+              
+                    <td>
+                      <div class="address">
+                        <span>{{x.address}}</span>
+                      </div>
+                    </td>
+                    <td [width]="260">
+                      <div class="avatar-group d-flex">
+                       
+                        <div style="width: 220px">
+                          <mat-select (selectionChange)="change(x)" [(ngModel)]="x.role">
+                            <mat-option  value="Customer">Khách hàng</mat-option>
+                            <mat-option  value="Warehouse Staff">Nhân viên kho</mat-option>
+                            <mat-option  value="Sales Staff">Nhân viên bán hàng</mat-option>
+                            <mat-option  value="Customer Service Staff">Nhân viên dịch vụ khách hàng</mat-option>
+                            
+                          </mat-select>
+                        </div>
+                      </div>
+                    </td>
+                    <td>
+                      <div style="margin-left: 20px">
+                       <!-- <mat-icon  data-bs-toggle="tooltip" data-bs-placement="top" title="Delete" class="icon" (click)="deleteUser(x)">delete</mat-icon> -->
+                        <a class="delete-icon" (click)="deleteUser(x)">
+                          <span><img src="assets/img/bin.png" width="23" height="23"></span>
+                        </a>
+                      </div>
+                    </td>
+                   
+                    <!-- <td>
+                      <div class="avatar-group">
+                        <a routerLink="update/{{prod.id}}">
+                          <span style="margin-right: 10px;"><img src="assets/img/setting.png" width="25" height="25"></span>
+                        </a>
+                        <a (click)="deleteProd(prod)">
+                          <span><img src="assets/img/bin.png" width="25" height="25"></span>
+                        </a>
+                        <a routerLink="detail/{{prod.id}}">
+                          <img src="assets/img/eye.png" width="40" height="40">
+                        </a>
+    
+                      </div>
+                    </td> -->
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <pagination-controls (pageChange)="p = $event"></pagination-controls>
+          
+          </div>
+        </div>
+      </div>
+      <div>
+      </div>
+    </div>

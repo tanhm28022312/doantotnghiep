@@ -1,0 +1,24 @@
+/* column-chart.component.css */
+.chart {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+  }
+  
+  .bar {
+    flex: 0 0 20%; /* Điều này xác định độ rộng của cột */
+    background-color: #5e72e4;
+    text-align: center;
+    color: white;
+    margin-right: 5px;
+  }
+  
+  .bar-label {
+    margin-top: 5px;
+  }
+  
+  .bar-inner {
+    transition: height 0.5s;
+    height: 0;
+  }
+  

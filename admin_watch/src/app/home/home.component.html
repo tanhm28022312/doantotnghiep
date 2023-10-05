@@ -1,0 +1,108 @@
+<nav  class="sidenav navbar navbar-vertical  fixed-left  navbar-expand-xs navbar-light bg-white" id="sidenav-main">
+    <div class="scrollbar-inner">
+      <!-- Brand -->
+      <div class="sidenav-header  align-items-center">
+        <!-- <a class="navbar-brand" href="javascript:void(0)">
+          <img src="assets/img/brand/logo.png" class="navbar-brand-img" alt="...">
+        </a> -->
+      </div>
+      <div class="navbar-inner">
+        <!-- Collapse -->
+        <div class="collapse navbar-collapse" id="sidenav-collapse-main">
+          <!-- Nav items -->
+          <ul class="navbar-nav" *ngIf="user">
+            <li *ngIf="user.role === 'admin'" class="nav-item">
+              <a class="nav-link active" routerLink='dashboard'>
+                <mat-icon>home</mat-icon>
+                <span class="nav-link-text">Thống kê</span>
+              </a>
+            </li>
+            <li *ngIf="user.role === 'admin'" class="nav-item">
+              <a class="nav-link active" routerLink='profile'>
+                <mat-icon>account_circle</mat-icon>
+                <span class="nav-link-text">Tài khoản</span>
+              </a>
+            </li>
+            <li *ngIf="user.role === 'admin' || user.role ==='Warehouse Staff'" class="nav-item">
+              <a class="nav-link active" routerLink='category'>
+                <mat-icon>subject</mat-icon>
+                <span class="nav-link-text">Danh mục</span>
+              </a>
+            </li>
+            <li *ngIf="user.role === 'admin' || user.role ==='Warehouse Staff'" class="nav-item">
+              <a class="nav-link active" routerLink='product'>
+                <mat-icon>storage</mat-icon>
+                <span class="nav-link-text">Sản phẩm</span>
+              </a>
+            </li>
+            <li *ngIf="user.role === 'admin' || user.role ==='Sales Staff'" class="nav-item">
+              <a class="nav-link active" routerLink='order'>
+                <mat-icon>add_shopping_cart</mat-icon>
+                <span class="nav-link-text">Đơn hàng</span>
+              </a>
+            </li>
+            <li *ngIf="user.role === 'admin' || user.role ==='Customer Service Staff'" class="nav-item">
+              <a class="nav-link active" routerLink='feedback'>
+                <mat-icon>feedback</mat-icon>
+                <span class="nav-link-text">Phản hồi</span>
+              </a>
+            </li>
+          </ul>
+          <!-- Divider -->
+        </div>
+      </div>
+    </div>
+  </nav>
+  
+  <div class="main-content" id="panel">
+    <!-- Topnav -->
+    <nav class="navbar navbar-top navbar-expand navbar-dark bg-primary border-bottom">
+      <div class="container-fluid">
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          
+          <!-- Navbar links -->
+          <ul class="navbar-nav align-items-center  ml-md-auto ">
+           
+          </ul>
+          <ul class="navbar-nav align-items-center  ml-auto ml-md-0 ">
+            <li class="nav-item dropdown">
+              <a class="nav-link pr-0" href="#" role="button" data-toggle="dropdown" aria-haspopup="true"
+                aria-expanded="false">
+                <div class="media align-items-center">
+                  <span class="avatar avatar-sm rounded-circle" >
+                    <img style="width:36px; height:36px;" alt="" src="assets/img/images/{{user?.imageUrl ?? defaultUrlImage}}" >
+                  </span>
+                  <div class="media-body  ml-2  d-none d-lg-block">
+                    <span class="mb-0 text-sm  font-weight-bold">{{user?.username}}</span>
+                  </div>
+                </div>
+              </a>
+              <div class="dropdown-menu  dropdown-menu-right ">
+                <div class="dropdown-header noti-title">
+                  <h6 class="text-overflow m-0">Xin chào!</h6>
+                </div>
+  
+                <a *ngIf="check==true" routerLink='login' class="dropdown-item">
+                  <i class="ni ni-key-25 text-info"></i>
+                  <span>Đăng nhập</span>
+                </a>
+                <a *ngIf="check==true" routerLink='register' class="dropdown-item">
+                  <i class="ni ni-circle-08 text-pink"></i>
+                  <span>Đăng kí</span>
+                </a>
+                <a *ngIf="checkLogout==true" (click)="shop()" class="dropdown-item">
+                    <i class="ni ni-basket"></i>
+                 Mua hàng online
+                </a>
+                <a *ngIf="checkLogout==true" (click)='logout()' class="dropdown-item">
+                  <i class="ni ni-user-run"></i>
+                  Đăng xuất
+                </a>
+                
+              </div>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+    <router-outlet></router-outlet>

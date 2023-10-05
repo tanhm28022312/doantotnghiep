@@ -1,0 +1,73 @@
+<div class="header bg-primary pb-6">
+  <div class="container-fluid">
+    <div class="header-body">
+      <div class="row align-items-center py-4">
+
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="container-fluid mt--6">
+  <div class="row">
+    <div class="col">
+      <div class="card">
+       
+        <div class="card-header border-0 d-flex">
+        
+          <h3 class="mb-0">Quản lý phản hồi khách hàng (<span class="total">{{ listFeedBack?.length }} phản hồi</span>)</h3>
+        </div>
+
+       
+        
+        <div class="table-responsive" id="content" >
+          <table class="table align-items-center table-flush">
+            <thead class="thead-light">
+              <tr>
+                <th scope="col" class="sort" data-sort="name">Tên khách hàng</th>
+                <th scope="col" class="sort" data-sort="shortdescription">Số điện thoại</th>
+                <th scope="col" class="sort" data-sort="saleoff">Email</th>
+                <th scope="col" style="text-align: center;">Tin nhắn</th>
+              </tr>
+            </thead>
+            <tbody class="list">
+              <tr *ngFor="let x of listFeedBack | paginate: { itemsPerPage: 20, currentPage: p } ">
+                <th scope="row" style="height: 65.07px;">
+                  <div class="media align-items-center">
+                   
+                    <div class="media-body">
+                      <span class="name mb-0 text-sm">{{x.customerName}}</span>
+                    </div>
+                  </div>
+                </th>
+               
+
+                <td>
+                  <div class="phone">
+                    <span>{{x.contactPhone}}</span>
+                  </div>
+                </td>
+                <td>
+                  <div class="email">
+                    <span>{{x.contactEmail}}</span>
+                  </div>
+                </td>
+                <td style="text-align: center;">
+                  <div class="message">
+                    <span>{{x.message}}</span>
+                  </div>
+                </td>
+              
+    
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <pagination-controls (pageChange)="p = $event"></pagination-controls>
+      
+      </div>
+    </div>
+  </div>
+  <div>
+  </div>
+</div>

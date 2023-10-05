@@ -1,0 +1,46 @@
+<div class="main-content">
+    <!-- Header -->
+    <div class="header bg-gradient-primary py-7 py-lg-3 pt-lg-9">
+      <div class="separator separator-bottom separator-skew zindex-100">
+        <svg x="0" y="0" viewBox="0 0 2560 100" preserveAspectRatio="none" version="1.1" xmlns="http://www.w3.org/2000/svg">
+          <polygon class="fill-default" points="2560 0 2560 100 0 100"></polygon>
+        </svg>
+      </div>
+    </div>
+    <!-- Page content -->
+    <div class="container mt--8 pb-5">
+      <div class="row justify-content-center">
+        <div class="col-lg-5 col-md-7">
+          <div class="card bg-secondary border-0 mb-0">
+            <div class="card-body px-lg-5 py-lg-4">
+              <h5>Đăng nhập</h5>
+              <form [formGroup]="formLogin">
+                <div class="form-group mb-3">
+                  <div class="input-group input-group-merge input-group-alternative">
+                    <div class="input-group-prepend">
+                      <span class="input-group-text"><i class="ni ni-email-83"></i></span>
+                    </div>
+                    <input formControlName="email" name="email" class="form-control" placeholder="Email" type="email">
+                  </div>
+                </div>
+                <div class="form-group">
+                  <div class="input-group input-group-merge input-group-alternative">
+                    <div class="input-group-prepend">
+                      <span class="input-group-text"><i class="ni ni-lock-circle-open"></i></span>
+                    </div>
+                    <input formControlName="password" name="password" class="form-control" placeholder="Mật khẩu" type="password">
+                  </div>
+                </div>
+                <!-- <span> Don't have an account yet? <a routerLink="/register"> Register now </a></span> -->
+                <div class="text-center">
+                  <button type="submit" (click)="login()" class="btn btn-primary my-4">Đăng nhập</button>
+                </div>
+              </form>
+            </div>
+          </div>
+         
+        </div>
+      </div>
+    </div>
+  </div>
+

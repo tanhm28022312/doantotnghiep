@@ -1,0 +1,17 @@
+mat-select{
+    width: 154px;
+    border: 1px black solid;
+    height: 30px;
+}
+th {
+    padding-left: 40px;
+}
+textarea{
+    overflow: auto;
+    resize: vertical;
+    width: 350px;
+    height: 124px;
+}
+input, mat-select {
+    width: 350px;
+}

@@ -1,0 +1,10 @@
+button{
+    position: relative;
+    top: 25px;
+    left: 156px;
+    transform: scale(0.75);
+}
+.delete-icon{
+  cursor: pointer;
+  color: #67748e;
+}

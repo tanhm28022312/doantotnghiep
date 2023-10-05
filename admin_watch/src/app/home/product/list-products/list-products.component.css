@@ -1,0 +1,10 @@
+:host ::ng-deep .icon{
+   width: 11rem;
+}
+.icon {
+   cursor: pointer;
+}
+
+.delete-icon{
+   cursor: pointer;
+}

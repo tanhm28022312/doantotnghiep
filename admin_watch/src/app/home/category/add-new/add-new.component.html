@@ -1,0 +1,42 @@
+<div class="card-header border-0" style="margin: 10px 0px 10px 50px;">
+    <div class="card-header border-0 d-flex">
+        <mat-icon>library_add</mat-icon>
+        <p class="mb-0">Thêm mới</p>
+       
+      </div>
+  </div>
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="table-responsive">
+                <table id="mytable"
+                    class="table table-bordred table-striped fixed"
+                    style="table-layout: fixed;">
+                   
+                    <tr>
+                        <th>Tên <sup style="color:red">*</sup></th>  
+                        <td>
+                            <input type="text" style="border-radius: 8px;" name="cateName"[(ngModel)]="cate.name"/>
+                        </td>
+                    </tr>
+                    <!-- <tr>
+                        <th>Category Code</th>  
+                        <td>
+                            <input type="text" name="NameId"[(ngModel)]="cate.nameId"/>
+                        </td>
+                    </tr> -->
+              
+                </table>
+                <mat-accordion>
+                    <form [formGroup]="form" autocomplete="off" >
+                        <formly-form [form]="form" [fields]="fields" [model]="cate"></formly-form>
+                        <button type="submit" (click)="add()" class="btn btn-default" style="margin-left: 700px;">Thêm</button>
+                    </form>
+                  </mat-accordion>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
